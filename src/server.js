@@ -17,21 +17,23 @@ app.get(`/sanity`, function(request, response){
     response.send(`OK`)
 })
 app.get(`/recipes/:ingredient`, function(req, res){
+    //console.log(successStringLocal)
     var request = require('request')
-    console.log(successStringLocal)
     const ingredient = req.params.ingredient
     routeToAPI += ingredient 
     request(routeToAPI, /* { json: true },*/ (error, response, body) => {
-        console.log(successStringRemote)
+        //console.log(successStringRemote)
         if (error) { 
-            return console.log(error); }
+            return console.log(error)}
         //console.log(body.url);
         //console.log(body.explanation);
         console.log('statusCode:', response && response.statusCode) // Print the response status code if a response was received
         obj = JSON.parse(body)
-        console.log('body:', obj) // Print the HTML for the Google homepage.
-        res.send(obj)
-    });
+        console.log('body:', obj.results) // Print the HTML for the Google homepage.
+        res.send(obj.results)
+        console.log(successStringLocal)
+        console.log(successStringRemote)
+    })
     /*http.get(routeToAPI, (res)=> { //http Request
         console.log(successStringRemote)
 
@@ -57,7 +59,6 @@ app.get(`/recipes/:ingredient`, function(req, res){
             
         })
     })*/
-    
 })
 let socket = app.listen(port, function() {
     console.log(`Running server on port ${port}`)
