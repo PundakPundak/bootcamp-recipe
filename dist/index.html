@@ -7,9 +7,21 @@
 <body>
     <input type="text" id="recipe-input" placeholder="Enter recipe">
     <button onclick=fetchRecipe()>Search</button>
-
+    <div class="containter">     <!-- Handlebars script goes here -->    </div>
     <script src="./jquery/dist/jquery.js"></script>
+    <script src="./handlebars/dist/handlebars.js"></script>
     <script src="main.js"></script>
+    <script id="recipes-template" type="text/x-handlebars-template">
+        {{#each recipes}}
+            <div>
+                <ul>
+                    <li><a href="{{href}}">{{title}}</a></li>
+                    <li><img src={{thumbnail}} alt="Smiley face" height="42" width="42"></li>
+                    <li><span>{{ingredients}}</span></li> <!-- Maybe add another {{#each ingredients}}-->
+                </ul>
+            </div>
+        {{/each}}
+    </script>
 </body>
 
 </html>
