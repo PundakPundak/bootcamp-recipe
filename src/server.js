@@ -27,9 +27,10 @@ app.get(`/recipes/:ingredient`, function(req, res){
             return console.log(error); }
         //console.log(body.url);
         //console.log(body.explanation);
-        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-        console.log('body:', body); // Print the HTML for the Google homepage.
-        res.send(body)
+        console.log('statusCode:', response && response.statusCode) // Print the response status code if a response was received
+        obj = JSON.parse(body)
+        console.log('body:', obj) // Print the HTML for the Google homepage.
+        res.send(obj)
     });
     /*http.get(routeToAPI, (res)=> { //http Request
         console.log(successStringRemote)
