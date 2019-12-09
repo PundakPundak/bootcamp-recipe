@@ -6,22 +6,27 @@
 
 <body>
     <input type="text" id="recipe-input" placeholder="Enter recipe">
-    <button onclick=fetchRecipe()>Search</button>
-    <div class="containter">     <!-- Handlebars script goes here -->    </div>
-    <script src="./jquery/dist/jquery.js"></script>
-    <script src="./handlebars/dist/handlebars.js"></script>
-    <script src="main.js"></script>
+    <button onclick = fetchRecipe()> Search </button>
+    <div id="container">     
+        <!-- Handlebars script goes here -->   
+    </div>
     <script id="recipes-template" type="text/x-handlebars-template">
-        {{#each recipes}}
+        {{#each data}}    
             <div>
-                <ul>
+                <ul> 
                     <li><a href="{{href}}">{{title}}</a></li>
-                    <li><img src={{thumbnail}} alt="Smiley face" height="42" width="42"></li>
-                    <li><span>{{ingredients}}</span></li> <!-- Maybe add another {{#each ingredients}}-->
+                    <li><img src={{thumbnail}} height="42" width="42"></li>
+                    <!-- <li><span>{{ingredients}}</span></li>  -->
                 </ul>
             </div>
         {{/each}}
     </script>
+
+    <script src="./jquery/dist/jquery.js"></script>
+    <script src="./handlebars/dist/handlebars.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="main.js"></script>
+
 </body>
 
 </html>

@@ -1,14 +1,9 @@
 class Renderer{
-    constructor() {
-        this. =
-    }
     render(data) {
-        //Handlebars
-        //For loop
-        $("body").append(`<div>${data.idMeal}</div>`)
-        title
-        Image
-        ingrediets
+        const recipes = {data}
+        const source = $('#recipes-template').html();
+        const template = Handlebars.compile(source);
+        const newHTML = template(recipes)
+        $("#container").append(newHTML)
     }
 }
-module.exports = Renderer
